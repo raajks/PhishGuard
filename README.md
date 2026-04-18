@@ -225,14 +225,18 @@ curl -X POST http://localhost:5000/predict \
 This project is part of an academic research:
 
 > **A Survey on Phishing Detection Techniques: From Traditional Methods to Machine and Deep Learning Approaches**
+>
+> *Rajkumar Sharma, Arjoo Jain, Swati Nagar — Sunder Deep Engineering College (SDEC)*
 
-The paper surveys phishing detection evolution — from blacklisting to ML/DL — and proposes PhishGuard as a hybrid solution combining Random Forest (70%) with rule-based scoring (30%).
+Phishing attacks have become a major cybersecurity threat. This paper presents a comprehensive survey covering the progression from traditional approaches to advanced ML and deep learning-based methods, categorized into four groups: list-based, heuristic/similarity-based, machine learning-based, and deep learning-based models.
 
 | Item | Details |
 |------|---------|
-| **Topic** | Survey on Phishing Detection + Hybrid ML Approach |
+| **Authors** | Rajkumar Sharma, Arjoo Jain, Swati Nagar |
+| **Institution** | Sunder Deep Engineering College (SDEC) |
+| **Keywords** | Phishing Detection, Cybersecurity, ML, Deep Learning, URL Analysis |
 | **Dataset** | UCI Phishing Websites (11,055 samples, 30 features) |
-| **Key Contribution** | Hybrid ML + Rule-based engine with smart overrides |
+| **Key Contribution** | Comprehensive survey + Hybrid ML + Rule-based engine (PhishGuard) |
 | **Paper Outline** | [`research/paper_outline.txt`](research/paper_outline.txt) |
 | **Status** | 🔄 In Progress |
 
