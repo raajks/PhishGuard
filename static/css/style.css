@@ -87,7 +87,7 @@ html {
 }
 
 body {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Jost', sans-serif;
     background: var(--gradient-dark);
     color: var(--text-dark);
     line-height: 1.6;
