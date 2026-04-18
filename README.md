@@ -220,6 +220,24 @@ curl -X POST http://localhost:5000/predict \
 
 *Trained on UCI Phishing Websites dataset with 80/20 stratified split.*
 
+## 📝 Research Paper
+
+This project is part of an academic research:
+
+> **A Survey on Phishing Detection Techniques: From Traditional Methods to Machine and Deep Learning Approaches**
+
+The paper surveys phishing detection evolution — from blacklisting to ML/DL — and proposes PhishGuard as a hybrid solution combining Random Forest (70%) with rule-based scoring (30%).
+
+| Item | Details |
+|------|---------|
+| **Topic** | Survey on Phishing Detection + Hybrid ML Approach |
+| **Dataset** | UCI Phishing Websites (11,055 samples, 30 features) |
+| **Key Contribution** | Hybrid ML + Rule-based engine with smart overrides |
+| **Paper Outline** | [`research/paper_outline.txt`](research/paper_outline.txt) |
+| **Status** | 🔄 In Progress |
+
+See the [`research/`](research/) folder for the full paper outline, references, and PDF (when published).
+
 ## 🤝 Contributing
 
 1. Fork the repository
