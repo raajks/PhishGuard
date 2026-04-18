@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ck-navbar sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-                <span style="font-size:1.4rem">ðŸ”’</span>
+                <span style="font-size:1.4rem">🔒</span>
                 <span class="fw-bold" style="font-size:1.25rem; letter-spacing:-0.5px">PhishGuard</span>
             </a>
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -144,7 +144,7 @@
             </div>
         </section>
 
-        <!-- Loading State â€” Round Scanner -->
+        <!-- Loading State — Round Scanner -->
         <div id="loadingState" class="ck-loading" style="display: none;">
             <div class="ck-loading-inner">
                 
@@ -191,7 +191,7 @@
                 </h3>
                 <div class="ck-scan-target">
                     <i class="fas fa-crosshairs"></i>
-                    <span id="scanTargetURL" class="ck-scan-target-url">â€”</span>
+                    <span id="scanTargetURL" class="ck-scan-target-url">—</span>
                 </div>
 
                 <!-- Steps (horizontal pills) -->
@@ -415,7 +415,7 @@
         <div class="container">
             <div class="ck-footer-inner">
                 <div class="ck-footer-brand">
-                    <span class="logo-icon">ðŸ”’</span> PhishGuard
+                    <span class="logo-icon">🔒</span> PhishGuard
                 </div>
                 <p>&copy; 2026 PhishGuard &mdash; AI-Powered Phishing Detection</p>
                 <div class="ck-footer-links">
@@ -518,7 +518,7 @@
 
             await new Promise(r => setTimeout(r, 300));
             completeStep(0);
-            addTermLine('Feature extraction complete âœ“', 'ck-term-success');
+            addTermLine('Feature extraction complete ✓', 'ck-term-success');
             setProgress(30);
 
             // Step 2: ML Classification
@@ -533,7 +533,7 @@
 
             await new Promise(r => setTimeout(r, 300));
             completeStep(1);
-            addTermLine('ML classification done âœ“', 'ck-term-success');
+            addTermLine('ML classification done ✓', 'ck-term-success');
             setProgress(55);
 
             // Step 3: Rule Engine
@@ -557,7 +557,7 @@
                 
                 // Step 3 complete
                 completeStep(2);
-                addTermLine('Rule engine complete âœ“', 'ck-term-success');
+                addTermLine('Rule engine complete ✓', 'ck-term-success');
                 setProgress(80);
 
                 // Step 4: Generate Report
@@ -575,9 +575,9 @@
                 setProgress(100);
 
                 const verdict = data.prediction || 'Unknown';
-                if (verdict === 'Safe') addTermLine(`Verdict: <span style="color:#10b981;font-weight:700">âœ… ${verdict}</span> â€” Scan complete`, 'ck-term-success');
-                else if (verdict === 'Suspicious') addTermLine(`Verdict: <span style="color:#f59e0b;font-weight:700">âš ï¸ ${verdict}</span> â€” Scan complete`, 'ck-term-warn');
-                else addTermLine(`Verdict: <span style="color:#ef4444;font-weight:700">ðŸš¨ ${verdict}</span> â€” Scan complete`, 'ck-term-warn');
+                if (verdict === 'Safe') addTermLine(`Verdict: <span style="color:#10b981;font-weight:700">✅ ${verdict}</span> — Scan complete`, 'ck-term-success');
+                else if (verdict === 'Suspicious') addTermLine(`Verdict: <span style="color:#f59e0b;font-weight:700">⚠️ ${verdict}</span> — Scan complete`, 'ck-term-warn');
+                else addTermLine(`Verdict: <span style="color:#ef4444;font-weight:700">🚨 ${verdict}</span> — Scan complete`, 'ck-term-warn');
 
                 await new Promise(r => setTimeout(r, 500));
 
@@ -585,7 +585,7 @@
                 resetScanBtn();
 
                 if (data.prediction === 'Invalid URL') {
-                    showError('\u274C Invalid URL â€” ' + (data.error || 'Please enter a proper website address like https://google.com'));
+                    showError('\u274C Invalid URL — ' + (data.error || 'Please enter a proper website address like https://google.com'));
                 } else if (data.error || data.success === false) {
                     showError(data.error || data.message || 'Analysis failed');
                 } else {
@@ -633,13 +633,13 @@
                 verdictClass = 'ck-warning';
                 verdictIcon = 'fas fa-exclamation-triangle';
                 adviceText = '<strong>Caution:</strong> This URL has some suspicious characteristics. Proceed with care and verify the source.';
-                verdictMsg = 'Some risk indicators found â€” proceed with caution';
+                verdictMsg = 'Some risk indicators found — proceed with caution';
             } else {
                 verdict = 'URL IS SAFE';
                 verdictClass = 'ck-safe';
                 verdictIcon = 'fas fa-shield-halved';
                 adviceText = '<strong>All clear:</strong> This URL appears legitimate based on our analysis. No threats detected.';
-                verdictMsg = 'No phishing indicators found â€” this URL appears safe';
+                verdictMsg = 'No phishing indicators found — this URL appears safe';
             }
 
             // ===== Verdict banner =====
@@ -730,7 +730,7 @@
 
             // Summary
             const explanation = data.explanation || {};
-            document.getElementById('explainSummary').textContent = (explanation.summary || '').replace(/[ðŸš¨âš ï¸âœ…â“]/g, '').trim();
+            document.getElementById('explainSummary').textContent = (explanation.summary || '').replace(/[🚨⚠️✅❓]/g, '').trim();
 
             // Score Breakdown bars
             const breakdown = data.score_breakdown || {};
@@ -857,9 +857,9 @@
             const mlScore = document.getElementById('mlScoreVal').textContent;
             const ruleScore = document.getElementById('ruleScoreVal').textContent;
 
-            const report = `â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
-ðŸ”’ PhishGuard â€” Threat Report
-â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+            const report = `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔒 PhishGuard — Threat Report
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Verdict:    ${verdict}
 Risk Score: ${threat}
 ML Score:   ${mlScore}
@@ -869,7 +869,7 @@ Domain:     ${domain}
 Protocol:   ${protocol}
 Features:   ${safe} Passed / ${flagged} Flagged
 Method:     Hybrid (ML 70% + Rules 30%)
-â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Scanned via PhishGuard AI`;
 
             navigator.clipboard.writeText(report).then(() => {
@@ -885,7 +885,7 @@ Scanned via PhishGuard AI`;
             const verdict = document.getElementById('verdictTitle').textContent;
             const url = document.getElementById('infoURL').textContent;
             if (navigator.share) {
-                navigator.share({ title: 'PhishGuard Report', text: `${verdict} â€” ${url}`, url: window.location.href });
+                navigator.share({ title: 'PhishGuard Report', text: `${verdict} — ${url}`, url: window.location.href });
             } else {
                 copyReport();
             }
@@ -1204,7 +1204,7 @@ Scanned via PhishGuard AI`;
             animation: ck-spin 2s linear infinite;
         }
 
-        /* Scan line â€” sweeps top to bottom INSIDE the circle */
+        /* Scan line — sweeps top to bottom INSIDE the circle */
         .ck-rs-scanline {
             position: absolute; left: 24px; right: 24px;
             height: 2px; z-index: 5; pointer-events: none; border-radius: 2px;
@@ -1320,7 +1320,7 @@ Scanned via PhishGuard AI`;
             text-overflow: ellipsis; white-space: nowrap;
         }
 
-        /* Steps â€” horizontal pills */
+        /* Steps — horizontal pills */
         .ck-loading-steps {
             display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center;
         }
