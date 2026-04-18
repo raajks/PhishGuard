@@ -192,6 +192,12 @@ def checker():
     """
     return render_template('checker.html')
 
+@app.route('/research')
+def research():
+    """
+    Research Paper page
+    """
+    return render_template('research.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
