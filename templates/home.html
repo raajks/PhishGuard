@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard - Phishing URL Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="hp-bg-grid"></div>
+    <div class="hp-bg-glow hp-glow-1"></div>
+    <div class="hp-bg-glow hp-glow-2"></div>
+    <div class="hp-bg-glow hp-glow-3"></div>
+    <!-- Navigation Bar (Bootstrap 5) -->
+    <nav class="navbar navbar-expand-lg navbar-dark ck-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <span style="font-size:1.4rem">🔒</span>
+                <span class="fw-bold" style="font-size:1.25rem; letter-spacing:-0.5px">PhishGuard</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ck-nav-highlight" href="/checker">
+                            <i class="fas fa-shield-halved me-1"></i> Scanner
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section with Scanner -->
+        <section class="hp-hero">
+            <div class="hp-hero-inner">
+                <!-- Left: Text Content -->
+                <div class="hp-hero-text">
+                    <div class="hp-badge">
+                        <span class="hp-badge-dot"></span>
+                        <span>AI-Powered Threat Detection</span>
+                    </div>
+                    <h1 class="hp-title">
+                        Detect Phishing<br>
+                        <span class="hp-title-gradient">Before It Strikes</span>
+                    </h1>
+                    <p class="hp-subtitle">
+                        Advanced machine learning meets rule-based intelligence to scan URLs in real-time. 
+                        Protect yourself from phishing, malware, and suspicious links instantly.
+                    </p>
+                    <div class="hp-hero-actions">
+                        <a href="/checker" class="hp-btn-primary">
+                            <i class="fas fa-crosshairs"></i> Start Scanning
+                        </a>
+                        <a href="#features" class="hp-btn-ghost">
+                            <i class="fas fa-arrow-down"></i> Learn More
+                        </a>
+                    </div>
+                    <div class="hp-trust-bar">
+                        <div class="hp-trust-item">
+                            <span class="hp-trust-num">12,847+</span>
+                            <span class="hp-trust-label">URLs Scanned</span>
+                        </div>
+                        <div class="hp-trust-divider"></div>
+                        <div class="hp-trust-item">
+                            <span class="hp-trust-num">95%</span>
+                            <span class="hp-trust-label">Accuracy</span>
+                        </div>
+                        <div class="hp-trust-divider"></div>
+                        <div class="hp-trust-item">
+                            <span class="hp-trust-num">&lt; 2s</span>
+                            <span class="hp-trust-label">Scan Time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Scanner Visual -->
+                <div class="hp-hero-visual">
+                    <div class="hp-scanner">
+                        <!-- Outer glow -->
+                        <div class="hp-sc-glow"></div>
+                        <!-- Rotating rings -->
+                        <div class="hp-sc-ring hp-sc-ring-1"></div>
+                        <div class="hp-sc-ring hp-sc-ring-2"></div>
+                        <div class="hp-sc-ring hp-sc-ring-3"></div>
+                        <!-- Grid -->
+                        <div class="hp-sc-grid">
+                            <div class="hp-sc-grid-h"></div>
+                            <div class="hp-sc-grid-v"></div>
+                            <div class="hp-sc-grid-c hp-sc-gc1"></div>
+                            <div class="hp-sc-grid-c hp-sc-gc2"></div>
+                        </div>
+                        <!-- Radar sweep -->
+                        <div class="hp-sc-sweep"></div>
+                        <!-- Scan line -->
+                        <div class="hp-sc-scanline"></div>
+                        <!-- Center core -->
+                        <div class="hp-sc-core">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <!-- Orbiting dots -->
+                        <div class="hp-sc-dot hp-dot-1"></div>
+                        <div class="hp-sc-dot hp-dot-2"></div>
+                        <div class="hp-sc-dot hp-dot-3"></div>
+                        <!-- Floating labels -->
+                        <div class="hp-sc-label hp-label-1"><i class="fas fa-check-circle"></i> Safe</div>
+                        <div class="hp-sc-label hp-label-2"><i class="fas fa-triangle-exclamation"></i> Threat</div>
+                        <div class="hp-sc-label hp-label-3"><i class="fas fa-lock"></i> SSL</div>
+                        <div class="hp-sc-label hp-label-4"><i class="fas fa-robot"></i> ML</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="hp-section">
+            <div class="hp-section-header">
+                <span class="hp-section-badge"><i class="fas fa-bolt"></i> Features</span>
+                <h2 class="hp-section-title">Why Choose PhishGuard?</h2>
+                <p class="hp-section-sub">Enterprise-grade protection powered by cutting-edge AI technology</p>
+            </div>
+            <div class="hp-features-grid">
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(99,102,241,0.12); color:#818cf8"><i class="fas fa-magnifying-glass-chart"></i></div>
+                    <h3>Deep URL Analysis</h3>
+                    <p>Analyzes 30+ URL characteristics including protocol, domain structure, IP addresses, and suspicious keywords</p>
+                </div>
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(236,72,153,0.12); color:#f472b6"><i class="fas fa-brain"></i></div>
+                    <h3>Hybrid ML Engine</h3>
+                    <p>RandomForest ML (70%) + Rule-based engine (30%) with smart override system for maximum accuracy</p>
+                </div>
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(16,185,129,0.12); color:#34d399"><i class="fas fa-bolt"></i></div>
+                    <h3>Instant Results</h3>
+                    <p>Get comprehensive analysis in under 2 seconds with confidence scoring and detailed breakdowns</p>
+                </div>
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(245,158,11,0.12); color:#fbbf24"><i class="fas fa-user-shield"></i></div>
+                    <h3>100% Private</h3>
+                    <p>URLs are processed locally and never stored. Complete privacy guaranteed — zero data collection</p>
+                </div>
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(139,92,246,0.12); color:#a78bfa"><i class="fas fa-chart-line"></i></div>
+                    <h3>Detailed Reports</h3>
+                    <p>Score breakdowns, ML vs Rule analysis, danger warnings, safe indicators, and actionable advice</p>
+                </div>
+                <div class="hp-feature-card">
+                    <div class="hp-feat-icon" style="background:rgba(239,68,68,0.12); color:#f87171"><i class="fas fa-fingerprint"></i></div>
+                    <h3>Brand Detection</h3>
+                    <p>Identifies popular brand impersonation in phishing URLs targeting Google, Facebook, PayPal, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="hp-section">
+            <div class="hp-section-header">
+                <span class="hp-section-badge"><i class="fas fa-route"></i> Process</span>
+                <h2 class="hp-section-title">How It Works</h2>
+                <p class="hp-section-sub">Four simple steps to protect yourself from phishing threats</p>
+            </div>
+            <div class="hp-steps">
+                <div class="hp-step-card">
+                    <div class="hp-step-num">01</div>
+                    <div class="hp-step-icon"><i class="fas fa-link"></i></div>
+                    <h3>Enter URL</h3>
+                    <p>Paste any suspicious URL into the scanner</p>
+                </div>
+                <div class="hp-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="hp-step-card">
+                    <div class="hp-step-num">02</div>
+                    <div class="hp-step-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>AI Analysis</h3>
+                    <p>ML model + rule engine analyze 30+ features</p>
+                </div>
+                <div class="hp-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="hp-step-card">
+                    <div class="hp-step-num">03</div>
+                    <div class="hp-step-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Get Verdict</h3>
+                    <p>Instant Safe / Suspicious / Phishing result</p>
+                </div>
+                <div class="hp-step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="hp-step-card">
+                    <div class="hp-step-num">04</div>
+                    <div class="hp-step-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Stay Safe</h3>
+                    <p>Act on detailed threat report & reasons</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Check -->
+        <section class="hp-section">
+            <div class="hp-section-header">
+                <span class="hp-section-badge"><i class="fas fa-microscope"></i> Analysis</span>
+                <h2 class="hp-section-title">What We Check</h2>
+                <p class="hp-section-sub">Comprehensive URL threat intelligence powered by 30+ signal analysis</p>
+            </div>
+            <div class="hp-check-grid">
+                <div class="hp-check-item">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <h4>Domain Analysis</h4>
+                        <p>TLD, subdomains, length, special characters, age</p>
+                    </div>
+                </div>
+                <div class="hp-check-item">
+                    <i class="fas fa-server"></i>
+                    <div>
+                        <h4>IP Detection</h4>
+                        <p>Direct IP usage, hosting provider identification</p>
+                    </div>
+                </div>
+                <div class="hp-check-item">
+                    <i class="fas fa-lock"></i>
+                    <div>
+                        <h4>SSL / HTTPS</h4>
+                        <p>Protocol verification, certificate trust status</p>
+                    </div>
+                </div>
+                <div class="hp-check-item">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <h4>URL Patterns</h4>
+                        <p>Redirects, shorteners, @ symbols, hex encoding</p>
+                    </div>
+                </div>
+                <div class="hp-check-item">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <div>
+                        <h4>Suspicious Keywords</h4>
+                        <p>Login, verify, secure, bank, account, update</p>
+                    </div>
+                </div>
+                <div class="hp-check-item">
+                    <i class="fas fa-building-columns"></i>
+                    <div>
+                        <h4>Brand Spoofing</h4>
+                        <p>Google, PayPal, Facebook, Amazon impersonation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="hp-section">
+            <div class="hp-section-header">
+                <span class="hp-section-badge"><i class="fas fa-info-circle"></i> About</span>
+                <h2 class="hp-section-title">About PhishGuard</h2>
+            </div>
+            <div class="hp-about-card">
+                <div class="hp-about-text">
+                    <p>PhishGuard is an advanced phishing URL detection system combining <strong>Machine Learning</strong> and <strong>Rule-Based Intelligence</strong>. In today's digital world, phishing attacks are increasingly sophisticated — our hybrid engine provides reliable, real-time protection.</p>
+                    <div class="hp-about-stats">
+                        <div class="hp-astat">
+                            <i class="fas fa-robot"></i>
+                            <span><strong>30+</strong> URL Features</span>
+                        </div>
+                        <div class="hp-astat">
+                            <i class="fas fa-trees"></i>
+                            <span><strong>100</strong> Decision Trees</span>
+                        </div>
+                        <div class="hp-astat">
+                            <i class="fas fa-bullseye"></i>
+                            <span><strong>~95%</strong> Accuracy</span>
+                        </div>
+                        <div class="hp-astat">
+                            <i class="fas fa-eye-slash"></i>
+                            <span><strong>Zero</strong> Data Stored</span>
+                        </div>
+                    </div>
+                    <p style="color:#94a3b8; margin-top:1.25rem;">Whether checking links from emails, messages, or social media — PhishGuard helps you make informed decisions and stay safe online.</p>
+                </div>
+                <div class="hp-about-cta">
+                    <a href="/checker" class="hp-btn-primary hp-btn-lg">
+                        <i class="fas fa-rocket"></i> Launch Scanner Now
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="hp-footer">
+        <div class="container">
+            <div class="hp-footer-inner">
+                <div class="hp-footer-brand">
+                    <span>🔒</span> PhishGuard
+                </div>
+                <p>&copy; 2026 PhishGuard &mdash; AI-Powered Phishing Detection</p>
+                <div class="hp-footer-links">
+                    <a href="/">Home</a>
+                    <a href="/checker">Scanner</a>
+                    <a href="#about">About</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* ========== HOME PAGE PROFESSIONAL STYLES ========== */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1535 100%);
+            color: #e2e8f0; min-height: 100vh;
+            display: flex; flex-direction: column;
+            overflow-x: hidden; line-height: 1.6;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* Background */
+        .hp-bg-grid {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hp-bg-glow {
+            position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+            filter: blur(120px); opacity: 0.35;
+        }
+        .hp-glow-1 { width: 600px; height: 600px; top: -200px; left: -100px; background: rgba(99,102,241,0.15); animation: hp-float 8s ease-in-out infinite; }
+        .hp-glow-2 { width: 500px; height: 500px; bottom: -150px; right: -100px; background: rgba(236,72,153,0.12); animation: hp-float 10s ease-in-out infinite reverse; }
+        .hp-glow-3 { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(139,92,246,0.08); animation: hp-float 12s ease-in-out infinite; }
+        @keyframes hp-float { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
+
+        .container { max-width: 1200px; position: relative; z-index: 1; }
+
+        /* ========== HERO ========== */
+        .hp-hero { padding: 4rem 0 3rem; }
+        .hp-hero-inner {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+        }
+        .hp-hero-text { animation: hp-fadeUp 0.7s ease; }
+
+        .hp-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25);
+            color: #a5b4fc; padding: 0.45rem 1.1rem; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+        .hp-badge-dot {
+            width: 7px; height: 7px; border-radius: 50%; background: #10b981;
+            animation: hp-pulse 2s ease infinite;
+        }
+        @keyframes hp-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)} 50%{box-shadow:0 0 0 6px rgba(16,185,129,0)} }
+
+        .hp-title {
+            font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 900;
+            line-height: 1.1; letter-spacing: -1.5px; margin: 0 0 1.25rem;
+            color: #f1f5f9;
+        }
+        .hp-title-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a78bfa 40%, #ec4899 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hp-subtitle {
+            font-size: 1.05rem; color: #94a3b8; line-height: 1.7;
+            margin-bottom: 2rem; max-width: 480px;
+        }
+
+        .hp-hero-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .hp-btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.75rem; border-radius: 0.75rem; border: none;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            color: #fff; font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 0.6px;
+            transition: all 0.3s; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(99,102,241,0.3);
+        }
+        .hp-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(99,102,241,0.4); filter: brightness(1.1); color: #fff; }
+        .hp-btn-lg { padding: 1rem 2.25rem; font-size: 0.95rem; }
+        .hp-btn-ghost {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.75rem; border-radius: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.12); background: transparent;
+            color: #94a3b8; font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.3s; cursor: pointer;
+        }
+        .hp-btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: #e2e8f0; background: rgba(255,255,255,0.04); }
+
+        .hp-trust-bar {
+            display: inline-flex; align-items: center; gap: 1.75rem;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1rem; padding: 1rem 1.75rem;
+        }
+        .hp-trust-item { display: flex; flex-direction: column; align-items: center; }
+        .hp-trust-num { font-size: 1.3rem; font-weight: 800; color: #fff; }
+        .hp-trust-label { font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.15rem; }
+        .hp-trust-divider { width: 1px; height: 35px; background: rgba(255,255,255,0.08); }
+
+        /* ========== SCANNER VISUAL ========== */
+        .hp-hero-visual {
+            display: flex; justify-content: center; align-items: center;
+            animation: hp-fadeUp 0.9s ease;
+        }
+        .hp-scanner {
+            width: 320px; height: 320px; border-radius: 50%; position: relative;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hp-sc-glow {
+            position: absolute; inset: -20px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+            animation: hp-float 4s ease-in-out infinite;
+        }
+        .hp-sc-ring {
+            position: absolute; border-radius: 50%; border: 1px solid;
+        }
+        .hp-sc-ring-1 {
+            inset: 0; border-color: rgba(99,102,241,0.2);
+            animation: hp-spin 15s linear infinite;
+            border-style: dashed;
+        }
+        .hp-sc-ring-2 {
+            inset: 20px; border-color: rgba(139,92,246,0.15);
+            animation: hp-spin 20s linear infinite reverse;
+        }
+        .hp-sc-ring-3 {
+            inset: 40px; border-color: rgba(236,72,153,0.12);
+            animation: hp-spin 25s linear infinite;
+            border-style: dotted;
+        }
+        @keyframes hp-spin { to { transform: rotate(360deg); } }
+
+        .hp-sc-grid { position: absolute; inset: 40px; border-radius: 50%; overflow: hidden; }
+        .hp-sc-grid-h, .hp-sc-grid-v {
+            position: absolute; background: rgba(99,102,241,0.06);
+        }
+        .hp-sc-grid-h { width: 100%; height: 1px; top: 50%; }
+        .hp-sc-grid-v { width: 1px; height: 100%; left: 50%; }
+        .hp-sc-grid-c {
+            position: absolute; border-radius: 50%; border: 1px solid rgba(99,102,241,0.06);
+            top: 50%; left: 50%; transform: translate(-50%,-50%);
+        }
+        .hp-sc-gc1 { width: 60%; height: 60%; }
+        .hp-sc-gc2 { width: 30%; height: 30%; }
+
+        .hp-sc-sweep {
+            position: absolute; inset: 40px; border-radius: 50%; overflow: hidden;
+        }
+        .hp-sc-sweep::after {
+            content: ''; position: absolute; top: 0; left: 50%; width: 50%; height: 50%;
+            transform-origin: bottom left;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(99,102,241,0.2) 40deg, transparent 80deg);
+            animation: hp-sweep 3s linear infinite;
+        }
+        @keyframes hp-sweep { to { transform: rotate(360deg); } }
+
+        .hp-sc-scanline {
+            position: absolute; left: 50px; right: 50px; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.6), transparent);
+            box-shadow: 0 0 12px rgba(99,102,241,0.4);
+            animation: hp-scanY 3s ease-in-out infinite;
+        }
+        @keyframes hp-scanY {
+            0%,100% { top: 50px; opacity: 0.3; }
+            50% { top: calc(100% - 50px); opacity: 1; }
+        }
+
+        .hp-sc-core {
+            width: 70px; height: 70px; border-radius: 50%; position: relative; z-index: 2;
+            background: rgba(99,102,241,0.12); border: 2px solid rgba(99,102,241,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem; color: #818cf8;
+            box-shadow: 0 0 30px rgba(99,102,241,0.2);
+        }
+
+        .hp-sc-dot {
+            position: absolute; width: 8px; height: 8px; border-radius: 50%;
+            background: #6366f1; box-shadow: 0 0 10px rgba(99,102,241,0.6);
+        }
+        .hp-dot-1 { animation: hp-orbit1 6s linear infinite; }
+        .hp-dot-2 { animation: hp-orbit2 8s linear infinite; background: #ec4899; box-shadow: 0 0 10px rgba(236,72,153,0.6); }
+        .hp-dot-3 { animation: hp-orbit3 10s linear infinite; background: #10b981; box-shadow: 0 0 10px rgba(16,185,129,0.6); }
+        @keyframes hp-orbit1 { 0%{top:10px;left:50%} 25%{top:50%;left:calc(100% - 10px)} 50%{top:calc(100% - 10px);left:50%} 75%{top:50%;left:10px} 100%{top:10px;left:50%} }
+        @keyframes hp-orbit2 { 0%{top:50%;right:15px;left:auto} 25%{top:calc(100% - 15px);left:50%;right:auto} 50%{top:50%;left:15px} 75%{top:15px;left:50%} 100%{top:50%;right:15px;left:auto} }
+        @keyframes hp-orbit3 { 0%{bottom:20px;left:50%} 25%{bottom:50%;left:20px} 50%{top:20px;left:50%;bottom:auto} 75%{top:50%;left:calc(100% - 20px)} 100%{bottom:20px;left:50%;top:auto} }
+
+        .hp-sc-label {
+            position: absolute; padding: 0.3rem 0.7rem; border-radius: 0.4rem;
+            font-size: 0.7rem; font-weight: 600; display: flex; align-items: center; gap: 0.3rem;
+            backdrop-filter: blur(8px); border: 1px solid; animation: hp-labelFloat 4s ease-in-out infinite;
+            white-space: nowrap;
+        }
+        .hp-label-1 { top: 15%; right: -10%; background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.25); color: #34d399; animation-delay: 0s; }
+        .hp-label-2 { bottom: 20%; left: -12%; background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.25); color: #f87171; animation-delay: 1s; }
+        .hp-label-3 { top: -5%; left: 20%; background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.25); color: #fbbf24; animation-delay: 2s; }
+        .hp-label-4 { bottom: 5%; right: -5%; background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.25); color: #a78bfa; animation-delay: 3s; }
+        @keyframes hp-labelFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+        @keyframes hp-fadeUp { from{opacity:0;transform:translateY(25px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ========== SECTIONS ========== */
+        .hp-section { padding: 4rem 0; position: relative; z-index: 1; }
+        .hp-section-header { text-align: center; margin-bottom: 3rem; }
+        .hp-section-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+            color: #a5b4fc; padding: 0.35rem 1rem; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .hp-section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800;
+            color: #f1f5f9; letter-spacing: -1px; margin: 0 0 0.75rem;
+        }
+        .hp-section-sub { color: #64748b; font-size: 1rem; max-width: 550px; margin: 0 auto; }
+
+        /* Features Grid */
+        .hp-features-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;
+        }
+        .hp-feature-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1rem; padding: 1.75rem; transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .hp-feature-card:hover { border-color: rgba(99,102,241,0.2); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .hp-feat-icon {
+            width: 48px; height: 48px; border-radius: 0.75rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 1rem;
+        }
+        .hp-feature-card h3 { font-size: 1.05rem; font-weight: 700; color: #e2e8f0; margin: 0 0 0.5rem; }
+        .hp-feature-card p { font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0; }
+
+        /* Steps */
+        .hp-steps {
+            display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;
+        }
+        .hp-step-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1rem; padding: 1.75rem 1.5rem; text-align: center;
+            width: 200px; position: relative; transition: all 0.3s;
+        }
+        .hp-step-card:hover { border-color: rgba(99,102,241,0.2); transform: translateY(-3px); }
+        .hp-step-num {
+            position: absolute; top: 12px; right: 14px; font-size: 0.65rem;
+            font-weight: 800; color: rgba(99,102,241,0.3); letter-spacing: 1px;
+        }
+        .hp-step-icon {
+            width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 1rem;
+            background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2);
+            display: flex; align-items: center; justify-content: center;
+            color: #818cf8; font-size: 1.1rem;
+        }
+        .hp-step-card h3 { font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin: 0 0 0.4rem; }
+        .hp-step-card p { font-size: 0.8rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .hp-step-arrow { color: rgba(99,102,241,0.3); font-size: 1rem; }
+
+        /* Check Grid */
+        .hp-check-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;
+        }
+        .hp-check-item {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1.25rem; border-radius: 0.85rem;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+        .hp-check-item:hover { border-color: rgba(99,102,241,0.15); background: rgba(255,255,255,0.04); }
+        .hp-check-item > i {
+            width: 40px; height: 40px; flex-shrink: 0; border-radius: 0.6rem;
+            background: rgba(99,102,241,0.08); color: #818cf8; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hp-check-item h4 { font-size: 0.92rem; font-weight: 700; color: #e2e8f0; margin: 0 0 0.25rem; }
+        .hp-check-item p { font-size: 0.82rem; color: #64748b; margin: 0; line-height: 1.5; }
+
+        /* About */
+        .hp-about-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 1.25rem; padding: 2.5rem; max-width: 800px; margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+        .hp-about-text p { color: #94a3b8; font-size: 0.95rem; line-height: 1.7; margin: 0; }
+        .hp-about-text strong { color: #e2e8f0; }
+        .hp-about-stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+            margin-top: 1.5rem; padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .hp-astat {
+            display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+            text-align: center;
+        }
+        .hp-astat i { color: #6366f1; font-size: 1.1rem; }
+        .hp-astat span { font-size: 0.82rem; color: #94a3b8; }
+        .hp-astat strong { color: #e2e8f0; font-weight: 800; }
+        .hp-about-cta { text-align: center; margin-top: 2rem; }
+
+        /* Footer */
+        .hp-footer {
+            margin-top: auto; padding: 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            position: relative; z-index: 1;
+        }
+        .hp-footer-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .hp-footer-brand { color: #e2e8f0; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .hp-footer p { color: #475569; font-size: 0.8rem; margin: 0; }
+        .hp-footer-links { display: flex; gap: 1.5rem; }
+        .hp-footer-links a { color: #64748b; text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+        .hp-footer-links a:hover { color: #a5b4fc; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .hp-hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hp-hero-text { order: 2; }
+            .hp-hero-visual { order: 1; }
+            .hp-subtitle { margin-left: auto; margin-right: auto; }
+            .hp-hero-actions { justify-content: center; }
+            .hp-trust-bar { margin: 0 auto; }
+            .hp-scanner { width: 260px; height: 260px; }
+            .hp-sc-label { display: none; }
+        }
+        @media (max-width: 768px) {
+            .hp-hero { padding: 2.5rem 0 2rem; }
+            .hp-section { padding: 3rem 0; }
+            .hp-features-grid, .hp-check-grid { grid-template-columns: 1fr; }
+            .hp-steps { flex-direction: column; }
+            .hp-step-arrow { transform: rotate(90deg); }
+            .hp-step-card { width: 100%; max-width: 320px; }
+            .hp-about-card { padding: 1.5rem; }
+            .hp-about-stats { grid-template-columns: repeat(2, 1fr); }
+            .hp-trust-bar { flex-direction: column; gap: 0.75rem; padding: 1rem; }
+            .hp-trust-divider { width: 50px; height: 1px; }
+            .hp-footer-inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .hp-title { font-size: 2rem; }
+            .hp-scanner { width: 200px; height: 200px; }
+            .hp-sc-core { width: 50px; height: 50px; font-size: 1.2rem; }
+            .hp-hero-actions { flex-direction: column; align-items: center; }
+        }
+    </style>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detector - Secure Your Browser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar (Bootstrap 5) -->
+    <nav class="navbar navbar-expand-lg navbar-dark ck-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <span style="font-size:1.4rem">🔒</span>
+                <span class="fw-bold" style="font-size:1.25rem; letter-spacing:-0.5px">PhishGuard</span>
+            </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ck-nav-highlight" href="/checker">
+                            <i class="fas fa-shield-halved me-1"></i> Scanner
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <section class="header-section">
+            <h1 class="main-title">🛡️ Phishing URL Detector</h1>
+            <p class="subtitle">Protect yourself from phishing attacks with AI-powered URL analysis</p>
+        </section>
+
+        <!-- Main Card -->
+        <div class="card main-card">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="urlInput" class="label">Enter URL to Check</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="urlInput" 
+                            class="url-input" 
+                            placeholder="https://example.com or example.com"
+                            autocomplete="off"
+                        >
+                        <button id="checkBtn" class="btn btn-primary">
+                            <span class="btn-text">Check URL</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                    <div id="errorMessage" class="error-message"></div>
+                </div>
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loadingSection" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p class="loading-text">Analyzing URL...</p>
+            </div>
+
+            <!-- Result Section -->
+            <div id="resultSection" class="result-section hidden">
+                <!-- Result Card -->
+                <div id="resultCard" class="result-card">
+                    <div class="result-header">
+                        <span id="resultIcon" class="result-icon"></span>
+                        <div class="result-info">
+                            <h2 id="resultTitle" class="result-title"></h2>
+                            <p id="resultMessage" class="result-message"></p>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Score -->
+                    <div class="confidence-section">
+                        <div class="confidence-header">
+                            <span class="confidence-label">Confidence Score</span>
+                            <span id="confidenceValue" class="confidence-value"></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- URL Display -->
+                    <div class="url-display">
+                        <p class="url-label">Analyzed URL:</p>
+                        <p id="analyzedUrl" class="url-text"></p>
+                    </div>
+
+                    <!-- Detection Process Roadmap -->
+                    <div class="process-roadmap">
+                        <h3 class="roadmap-title">🛣️ Detection Process Roadmap</h3>
+                        <div class="roadmap-steps">
+                            <div class="roadmap-step completed">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <p class="step-name">URL Validation</p>
+                                    <p class="step-description">Checking URL format</p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-connector"></div>
+                            
+                            <div class="roadmap-step completed">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <p class="step-name">Feature Extraction</p>
+                                    <p class="step-description">Analyzing 11 URL characteristics</p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-connector"></div>
+                            
+                            <div class="roadmap-step completed">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <p class="step-name">ML Analysis</p>
+                                    <p class="step-description">RandomForest model evaluation</p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-connector"></div>
+                            
+                            <div class="roadmap-step completed">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <p class="step-name">Risk Assessment</p>
+                                    <p class="step-description">Calculating confidence score</p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-connector"></div>
+                            
+                            <div class="roadmap-step completed">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <p class="step-name">Result Generation</p>
+                                    <p class="step-description">Final prediction ready</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk Analysis Breakdown -->
+                    <div class="risk-analysis">
+                        <h3 class="risk-title">⚙️ Risk Analysis Breakdown</h3>
+                        
+                        <!-- Suspicious Factors -->
+                        <div class="risk-section">
+                            <h4 class="risk-section-title">⚠️ Suspicious Factors</h4>
+                            <div id="suspiciousFactors" class="factors-list">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Safe Factors -->
+                        <div class="risk-section">
+                            <h4 class="risk-section-title">✅ Safe Factors</h4>
+                            <div id="safeFactors" class="factors-list">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Decision Explanation -->
+                        <div class="decision-box">
+                            <h4 class="decision-title">🤖 Why This Confidence Score?</h4>
+                            <p id="decisionExplanation" class="decision-text">
+                                <!-- Populated by JavaScript -->
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Features Toggle -->
+                    <div class="features-section">
+                        <button id="toggleFeaturesBtn" class="btn-toggle">
+                            📊 Show Extracted Features <span id="toggleArrow">▼</span>
+                        </button>
+                        <div id="featuresDetails" class="features-details hidden">
+                            <div class="features-grid" id="featuresGrid">
+                                <!-- Features will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SCAN RESULTS SECTION -->
+                    <div id="scanResultsSection" class="scan-results-section">
+                        <h3 class="scan-results-title">📋 Detailed Scan Results</h3>
+                        
+                        <!-- Domain & URL Information -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">Domain Information</h4>
+                            <div class="scan-info-grid">
+                                <div class="scan-info-item">
+                                    <span class="info-label">Domain:</span>
+                                    <span id="scanDomain" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">IP Address:</span>
+                                    <span id="scanIp" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">TLD:</span>
+                                    <span id="scanTld" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Protocol:</span>
+                                    <span id="scanProtocol" class="info-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Brand & Hosting -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">Brand & Hosting Information</h4>
+                            <div class="scan-info-grid">
+                                <div class="scan-info-item">
+                                    <span class="info-label">Brand:</span>
+                                    <span id="scanBrand" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Hosting Provider:</span>
+                                    <span id="scanHosting" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Hosting Type:</span>
+                                    <span id="scanHostingType" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">ASN:</span>
+                                    <span id="scanAsn" class="info-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">📍 Geolocation</h4>
+                            <div class="scan-info-grid">
+                                <div class="scan-info-item">
+                                    <span class="info-label">Country:</span>
+                                    <span id="scanCountry" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">City:</span>
+                                    <span id="scanCity" class="info-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Details -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">🔐 SSL Certificate</h4>
+                            <div class="scan-info-grid">
+                                <div class="scan-info-item">
+                                    <span class="info-label">Issued To:</span>
+                                    <span id="scanCertIssuedTo" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Issued By:</span>
+                                    <span id="scanCertIssuedBy" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Valid:</span>
+                                    <span id="scanCertValid" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Trusted:</span>
+                                    <span id="scanCertTrusted" class="info-value">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Threat Intelligence -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">⚠️ Threat Intelligence</h4>
+                            <div class="threat-grid">
+                                <div class="threat-item">
+                                    <span class="threat-label">Past Phish on Host</span>
+                                    <span id="scanPastPhishHost" class="threat-value">0</span>
+                                </div>
+                                <div class="threat-item">
+                                    <span class="threat-label">Past Phish on IP</span>
+                                    <span id="scanPastPhishIp" class="threat-value">0</span>
+                                </div>
+                                <div class="threat-item">
+                                    <span class="threat-label">Phishing Kits</span>
+                                    <span id="scanPhishingKits" class="threat-value">0</span>
+                                </div>
+                                <div class="threat-item">
+                                    <span class="threat-label">Spam Reports</span>
+                                    <span id="scanSpamReports" class="threat-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scan Details -->
+                        <div class="scan-card">
+                            <h4 class="scan-card-title">Scan Information</h4>
+                            <div class="scan-info-grid">
+                                <div class="scan-info-item">
+                                    <span class="info-label">Detection Date:</span>
+                                    <span id="scanDate" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Job ID:</span>
+                                    <span id="scanJobId" class="info-value">-</span>
+                                </div>
+                                <div class="scan-info-item">
+                                    <span class="info-label">Logos Detected:</span>
+                                    <span id="scanLogos" class="info-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="checkAnotherBtn" class="btn btn-secondary">
+                            Check Another URL
+                        </button>
+                        <button id="shareBtn" class="btn btn-secondary">
+                            📋 Copy Result
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section-info">
+            <h2 class="section-title">How It Works</h2>
+            <div class="features-grid-info">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>URL Analysis</h3>
+                    <p>Analyzes 11 different URL characteristics to detect phishing patterns</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Machine Learning</h3>
+                    <p>Uses RandomForest algorithm trained on thousands of phishing patterns</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Results</h3>
+                    <p>Get results in milliseconds with confidence scoring</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your URLs are processed locally and never stored</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">About This Tool</h2>
+            <div class="about-content">
+                <p>
+                    PhishGuard is an AI-powered phishing URL detector that helps protect you from malicious websites. 
+                    It analyzes various characteristics of URLs including:
+                </p>
+                <ul class="features-list">
+                    <li>URL length and structure</li>
+                    <li>Use of suspicious symbols (@, -, etc.)</li>
+                    <li>HTTPS protocol usage</li>
+                    <li>IP address detection</li>
+                    <li>Subdomain analysis</li>
+                    <li>Presence of suspicious keywords</li>
+                </ul>
+                <p>
+                    The machine learning model is trained to recognize patterns commonly found in phishing URLs. 
+                    While no security tool is 100% accurate, this detector provides an additional layer of protection 
+                    for your online safety.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PhishGuard. Built by Mr. Raj for your security.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
